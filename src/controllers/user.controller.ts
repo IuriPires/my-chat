@@ -4,7 +4,17 @@ import { hashPassword } from "../utils/passwordManager";
 
 async function getAll(req: Request, res: Response) {
   try {
-    const users = await knex("users").select("*");
+    const users = await knex("users").select(
+      "id",
+      "email",
+      "name",
+      "username",
+      "gender",
+      "birth_date",
+      "created_at",
+      "updated_at",
+      "activated"
+    );
     return res.status(200).json(users);
   } catch (errors) {
     console.error(errors);
