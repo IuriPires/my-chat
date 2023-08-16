@@ -1,15 +1,10 @@
-import nodemailer from "nodemailer";
-
-const sendEmail = async (email: string, subject: string, text: string) => {
-  const transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    secure: true,
-    auth: {
-      user: "ca6589c9155a7a",
-      pass: "50a4e083b023c3",
-    },
-  });
+const emailConfig = {
+  host: String(process.env.MAIL_HOST || ""),
+  port: String(process.env.MAIL_PORT || ""),
+  auth: {
+    user: String(process.env.MAIL_USER || ""),
+    pass: String(process.env.MAIL_PASSWORD || ""),
+  },
 };
 
-export default sendEmail;
+export default emailConfig;
