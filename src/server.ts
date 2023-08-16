@@ -1,5 +1,10 @@
+import "dotenv";
 import express from "express";
 import routes from "./routes";
+
+import mongoConnection from "../src/config/mongo.config";
+
+(async () => await mongoConnection())();
 
 const app = express();
 
